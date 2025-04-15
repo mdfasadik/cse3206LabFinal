@@ -68,6 +68,15 @@ TEST(StudentManagerTest, AddStudent)
     EXPECT_EQ(list[0], "Sadik");
 }
 
+TEST(StudentManagerTest, RemoveStudent)
+{
+    StudentManager::getInstance().clear();
+    StudentManager::getInstance().addStudent("Nafis");
+    bool removed = StudentManager::getInstance().removeStudent("Nafis");
+    EXPECT_TRUE(removed);
+    EXPECT_EQ(StudentManager::getInstance().getStudents().size(), 0);
+}
+
 TEST(StudentManagerTest, DisplayStudents)
 {
     StudentManager::getInstance().clear();
